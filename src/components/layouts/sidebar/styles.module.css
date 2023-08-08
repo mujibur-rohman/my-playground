@@ -1,5 +1,5 @@
 .sidebar {
-  @apply h-screen fixed shadow overflow-hidden transition-all duration-75 max-w-[16rem] md:relative md:block;
+  @apply h-screen fixed shadow overflow-hidden transition-all duration-75 max-w-[18rem] md:relative md:block;
 }
 
 .openSidebar {

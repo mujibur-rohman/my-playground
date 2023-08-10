@@ -29,7 +29,7 @@ const Sidebar = (props: Props) => {
           )}
         </div>
         <div className="flex flex-col h-full">
-          <div className="px-2 overflow-x-hidden overflow-y-auto scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100 h-[70%]">
+          <div className="px-2 overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100 h-[70%]">
             <h1>dwd</h1>
             <h1>dwd</h1>
             <h1>dwd</h1>
@@ -85,16 +85,9 @@ const Sidebar = (props: Props) => {
             <h1>dwd</h1>
             <h1>dwd</h1>
           </div>
-          <div className="grow-[4] text-sm z-50 max-h-48 my-auto whitespace-pre w-full font-medium">
-            <div className="flex border-y border-slate-300 p-4 items-center justify-between">
-              <div>
-                <p>Spark</p>
-                <small>No-cost $0/month</small>
-              </div>
-              <p className="text-teal-500 py-1.5 px-3 text-xs bg-teal-50 rounded-xl">
-                Upgrade
-              </p>
-            </div>
+          <div className="text-sm bg-red-100 h-[30%] z-50 my-auto whitespace-pre w-full font-medium">
+            <h1>dwd</h1>
+            <h1>dwd</h1>
           </div>
         </div>
       </div>

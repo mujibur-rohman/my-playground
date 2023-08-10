@@ -5,3 +5,15 @@
 .openSidebar {
   @apply -translate-x-0 w-[16rem];
 }
+
+.nav {
+  @apply px-2 py-3 flex flex-col gap-1 overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100 h-[70%];
+}
+
+.nav__item {
+  @apply flex gap-2 p-3 rounded-md transition-colors font-medium text-primary hover:bg-primary/20 cursor-pointer;
+}
+
+.nav__item--active {
+  @apply bg-primary/10;
+}

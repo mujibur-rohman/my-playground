@@ -14,28 +14,33 @@ const Sidebar = ({ open, openSidebar }: Props) => {
       {/* Backdrop */}
       <div
         className={cn(
-          "md:hidden fixed bg-black/20 top-0 bottom-0 right-0 left-0 transition-opacity",
-          { "opacity-0 scale-0": !open },
-          { "opacity-100 scale-100": open }
+          styles.backdropSidebar,
+          { [styles.openBackdrop]: open },
+          { [styles.closeBackdrop]: !open }
         )}
-        // onClick={openSidebar}
+        onClick={openSidebar}
       ></div>
-      <div className={styles.sidebar}>
+      <div
+        className={cn(styles.sidebar, {
+          [styles.openSidebar]: open,
+          [styles.closeSidebar]: !open,
+        })}
+      >
         <div style={{ padding: "0 1rem" }}>
           <div className={styles.header}>
-            {open ? (
-              <img
-                src="/assets/images/logo.png"
-                className={styles.logoOpened}
-                alt="blogue"
-              />
-            ) : (
-              <img
+            {/* {open ? ( */}
+            <img
+              src="/assets/images/logo.png"
+              className={styles.logoOpened}
+              alt="blogue"
+            />
+            {/* ) : ( */}
+            {/* <img
                 src="/assets/images/logo-brand.png"
                 className={styles.logoClosed}
                 alt="blogue"
               />
-            )}
+            )} */}
             <ArrowLeftFromLine
               className={styles.arrow}
               onClick={() => {

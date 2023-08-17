@@ -1,6 +1,43 @@
 @import "/src/styles/base/colors";
 @import "/src/styles/utils/responsive";
 
+.backdropSidebar {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.103);
+  backdrop-filter: blur(1px) !important;
+  z-index: 49;
+  transition: all 1s;
+  @include respond(desktop) {
+    display: none;
+  }
+}
+
+.openBackdrop {
+  animation: openBackdropAnimate 0.5s;
+  animation-fill-mode: both;
+}
+
+.closeBackdrop {
+  animation: closeBackdropAnimate 0.5s;
+  animation-fill-mode: both;
+}
+
+.openSidebar.openSidebar {
+  transform: translateX(0);
+  @include respond(desktop) {
+    width: 16rem;
+  }
+}
+
+.closeSidebar.closeSidebar {
+  transform: translateX(-16rem);
+  @include respond(desktop) {
+    transform: translateX(0);
+    width: 4rem;
+  }
+}
+
 .sidebar {
   position: fixed;
   display: flex;
@@ -10,6 +47,14 @@
   height: 100vh;
   width: 16rem;
   border-right: 1px solid $color-border;
+  transition: all 0.5s;
+
+  @include respond(tablet) {
+    width: 16rem;
+  }
+  @include respond(desktop) {
+    position: static;
+  }
 
   .header {
     position: relative;
@@ -27,6 +72,7 @@
       position: absolute;
       right: 1px;
       color: $color-text-base100;
+      cursor: pointer;
 
       @include respond(desktop) {
         display: none;
@@ -46,7 +92,6 @@
       gap: 5px;
 
       .menuItem {
-        background-color: aquamarine;
         display: flex;
         align-items: center;
         gap: 7px;
@@ -59,5 +104,31 @@
   .footer {
     flex-grow: 1;
     background-color: green;
+  }
+}
+
+/*
+  Animation
+*/
+
+@keyframes openBackdropAnimate {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes closeBackdropAnimate {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
   }
 }

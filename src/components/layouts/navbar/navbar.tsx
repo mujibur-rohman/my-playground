@@ -1,4 +1,5 @@
-import { Menu } from "lucide-react";
+import { Avatar } from "antd";
+import { Menu, User, User2 } from "lucide-react";
 
 type Props = {
   openSidebar: () => void;
@@ -13,7 +14,7 @@ const Navbar = ({ openSidebar }: Props) => {
           openSidebar();
         }}
       />
-      <div>Avatar</div>
+      <Avatar>M</Avatar>
     </nav>
   );
 };

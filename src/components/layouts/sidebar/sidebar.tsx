@@ -1,7 +1,10 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { ArrowLeftFromLine, LayoutDashboard, Newspaper } from "lucide-react";
+import { ArrowLeftFromLine } from "lucide-react";
 import styles from "./styles.module.scss";
+import { MENU_ITEM } from "@/services/constant";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 type Props = {
   open: boolean;
@@ -9,6 +12,7 @@ type Props = {
 };
 
 const Sidebar = ({ open, openSidebar }: Props) => {
+  const { pathname } = useRouter();
   return (
     <React.Fragment>
       {/* Backdrop */}
@@ -28,19 +32,22 @@ const Sidebar = ({ open, openSidebar }: Props) => {
       >
         <div style={{ padding: "0 1rem" }}>
           <div className={styles.header}>
-            {/* {open ? ( */}
             <img
               src="/assets/images/logo.png"
-              className={styles.logoOpened}
+              className={cn({
+                [styles.logoOpened]: open,
+                [styles.logoClosed]: !open,
+              })}
               alt="blogue"
             />
-            {/* ) : ( */}
-            {/* <img
-                src="/assets/images/logo-brand.png"
-                className={styles.logoClosed}
-                alt="blogue"
-              />
-            )} */}
+            <img
+              src="/assets/images/logo-title.png"
+              className={cn({
+                [styles.logoTitleOpened]: open,
+                [styles.logoTitleClosed]: !open,
+              })}
+              alt="blogue"
+            />
             <ArrowLeftFromLine
               className={styles.arrow}
               onClick={() => {
@@ -50,48 +57,34 @@ const Sidebar = ({ open, openSidebar }: Props) => {
           </div>
         </div>
         <div className={styles.body}>
-          <ul className={styles.menu}>
-            <li className={styles.menuItem}>
-              <LayoutDashboard />
-              <span>Dashboard</span>
-            </li>
-            <li className={styles.menuItem}>
-              <Newspaper />
-              <span>My Articles</span>
-            </li>
-            <li className={styles.menuItem}>
-              <Newspaper />
-              <span>My Articles</span>
-            </li>
-            <li className={styles.menuItem}>
-              <Newspaper />
-              <span>My Articles</span>
-            </li>
-            <li className={styles.menuItem}>
-              <Newspaper />
-              <span>My Articles</span>
-            </li>
-            <li className={styles.menuItem}>
-              <Newspaper />
-              <span>My Articles</span>
-            </li>
-            <li className={styles.menuItem}>
-              <Newspaper />
-              <span>My Articles</span>
-            </li>
-            <li className={styles.menuItem}>
-              <Newspaper />
-              <span>My Articles</span>
-            </li>
-            <li className={styles.menuItem}>
-              <Newspaper />
-              <span>My Articles</span>
-            </li>
-          </ul>
+          <div className={styles.menu}>
+            <h3
+              className={cn(styles.titleMenu, {
+                [styles.titleMenu__closed]: !open,
+              })}
+            >
+              MENU
+            </h3>
+            {MENU_ITEM.map((menu) => (
+              <Link
+                key={menu.id}
+                href={menu.path}
+                className={cn(styles.menuItem, {
+                  [styles.menuItem__active]:
+                    pathname === menu.path && pathname.startsWith(menu.path),
+                })}
+              >
+                <menu.icon />
+                <span className={cn({ [styles.close]: !open })}>
+                  {menu.name}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
-        <div className={styles.footer}>
+        {/* <div className={styles.footer}>
           <div>sd</div>
-        </div>
+        </div> */}
       </div>
     </React.Fragment>
   );

@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
+import React from "react";
 import { ArrowLeftFromLine, LayoutDashboard, Newspaper } from "lucide-react";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 type Props = {
   open: boolean;
@@ -9,54 +10,85 @@ type Props = {
 
 const Sidebar = ({ open, openSidebar }: Props) => {
   return (
-    <div
-      className={cn(styles.sidebar, {
-        [styles.openSidebar]: open,
-        "-translate-x-[4rem] md:translate-x-0 md:w-[4rem]": !open,
-      })}
-    >
-      <div className="relative h-16 flex items-center justify-center border-b-2 mx-2">
-        {open ? (
-          <img className="w-28" src="/assets/images/logo.png" alt="blogue" />
-        ) : (
-          <img
-            className="w-9 hidden md:block"
-            src="/assets/images/logo-brand.png"
-            alt="blogue"
-          />
+    <React.Fragment>
+      {/* Backdrop */}
+      <div
+        className={cn(
+          "md:hidden fixed bg-black/20 top-0 bottom-0 right-0 left-0 transition-opacity",
+          { "opacity-0 scale-0": !open },
+          { "opacity-100 scale-100": open }
         )}
-        <ArrowLeftFromLine
-          className={cn(
-            "text-ring cursor-pointer absolute opacity-100 md:opacity-0 right-0"
-          )}
-          onClick={() => {
-            openSidebar();
-          }}
-        />
-      </div>
-      <div className="flex flex-col h-full">
-        <ul className={styles.nav}>
-          <li className={cn(styles["nav__item"], styles["nav__item--active"])}>
-            <LayoutDashboard />
-            <span className={cn({ hidden: !open })}>Dashboard</span>
-          </li>
-          <li className={styles["nav__item"]}>
-            <Newspaper />
-            <span
-              className={cn({
-                hidden: !open,
-              })}
-            >
-              My Articles
-            </span>
-          </li>
-        </ul>
-        <div className="text-sm bg-red-100 h-[30%] z-50 my-auto whitespace-pre w-full font-medium">
-          <h1>dwd</h1>
-          <h1>dwd</h1>
+        // onClick={openSidebar}
+      ></div>
+      <div className={styles.sidebar}>
+        <div style={{ padding: "0 1rem" }}>
+          <div className={styles.header}>
+            {open ? (
+              <img
+                src="/assets/images/logo.png"
+                className={styles.logoOpened}
+                alt="blogue"
+              />
+            ) : (
+              <img
+                src="/assets/images/logo-brand.png"
+                className={styles.logoClosed}
+                alt="blogue"
+              />
+            )}
+            <ArrowLeftFromLine
+              className={styles.arrow}
+              onClick={() => {
+                openSidebar();
+              }}
+            />
+          </div>
+        </div>
+        <div className={styles.body}>
+          <ul className={styles.menu}>
+            <li className={styles.menuItem}>
+              <LayoutDashboard />
+              <span>Dashboard</span>
+            </li>
+            <li className={styles.menuItem}>
+              <Newspaper />
+              <span>My Articles</span>
+            </li>
+            <li className={styles.menuItem}>
+              <Newspaper />
+              <span>My Articles</span>
+            </li>
+            <li className={styles.menuItem}>
+              <Newspaper />
+              <span>My Articles</span>
+            </li>
+            <li className={styles.menuItem}>
+              <Newspaper />
+              <span>My Articles</span>
+            </li>
+            <li className={styles.menuItem}>
+              <Newspaper />
+              <span>My Articles</span>
+            </li>
+            <li className={styles.menuItem}>
+              <Newspaper />
+              <span>My Articles</span>
+            </li>
+            <li className={styles.menuItem}>
+              <Newspaper />
+              <span>My Articles</span>
+            </li>
+            <li className={styles.menuItem}>
+              <Newspaper />
+              <span>My Articles</span>
+            </li>
+          </ul>
+        </div>
+        <div className={styles.footer}>
+          <div>sd</div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

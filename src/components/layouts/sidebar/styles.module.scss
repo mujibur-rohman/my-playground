@@ -1,0 +1,63 @@
+@import "/src/styles/base/colors";
+@import "/src/styles/utils/responsive";
+
+.sidebar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  background-color: $color-bg-base;
+  height: 100vh;
+  width: 16rem;
+  border-right: 1px solid $color-border;
+
+  .header {
+    position: relative;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid $color-border;
+
+    .logoOpened {
+      width: 8rem;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 1px;
+      color: $color-text-base100;
+
+      @include respond(desktop) {
+        display: none;
+      }
+    }
+  }
+
+  .body {
+    margin-top: 3px;
+    height: 80%;
+    overflow-y: auto;
+    padding: 0 10px;
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .menuItem {
+        background-color: aquamarine;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 1rem;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .footer {
+    flex-grow: 1;
+    background-color: green;
+  }
+}

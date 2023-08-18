@@ -1,0 +1,16 @@
+@import "/src/styles/base/colors";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(12px);
+  height: 4rem;
+  padding: 0 0.75rem;
+  border-bottom: 2px solid $color-border;
+
+  .hamburger {
+    color: $color-text-base100;
+    cursor: pointer;
+  }
+}

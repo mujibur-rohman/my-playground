@@ -1,5 +1,6 @@
 import { Avatar } from "antd";
-import { Menu, User, User2 } from "lucide-react";
+import { Menu } from "lucide-react";
+import styles from "./styles.module.scss";
 
 type Props = {
   openSidebar: () => void;
@@ -7,13 +8,14 @@ type Props = {
 
 const Navbar = ({ openSidebar }: Props) => {
   return (
-    <nav className="backdrop-blur-md h-16 flex px-3 items-center border-b-2 justify-between">
+    <nav className={styles.navbar}>
       <Menu
-        className="text-ring cursor-pointer"
+        className={styles.hamburger}
         onClick={() => {
           openSidebar();
         }}
       />
+
       <Avatar>M</Avatar>
     </nav>
   );

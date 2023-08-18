@@ -78,13 +78,13 @@
 
     .logoTitleOpened {
       width: 4rem;
-      animation: openBackdropAnimate 1s;
+      animation: openBackdropAnimate 0.5s;
     }
 
     .logoTitleClosed {
       width: 4rem;
       visibility: hidden;
-      animation: closeBackdropAnimate 1s;
+      animation: closeBackdropAnimate 0.5s;
     }
 
     .arrow {

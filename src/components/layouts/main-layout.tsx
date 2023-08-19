@@ -1,27 +1,25 @@
 import { useState, useCallback } from "react";
 import Sidebar from "./sidebar/sidebar";
 import Navbar from "./navbar/navbar";
-import { Montserrat } from "next/font/google";
-
-const montserrat = Montserrat({ subsets: ["latin"] });
+import variable from "@/styles/variables.module.scss";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const MainLayout = (props: Props) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const toggleSidebar = useCallback(() => {
     setOpen(!open);
   }, [open]);
 
   return (
-    <main className={`${montserrat.className} flex w-full`}>
+    <main style={{ display: "flex", background: variable.colorBackground }}>
       <Sidebar open={open} openSidebar={toggleSidebar} />
-      <div className="w-full">
+      <div style={{ width: "100%" }}>
         <Navbar openSidebar={toggleSidebar} />
-        {props.children}
+        <div>{props.children}</div>
       </div>
     </main>
   );

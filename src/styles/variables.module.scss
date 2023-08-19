@@ -1,5 +1,11 @@
 @import "base/colors";
 
 :export {
+  colorBackground: $color-bg-base;
   colorPrimary: $color-primary;
+  colorSecondary: $color-secondary;
+  colorAccent: $color-accent;
+  colorInfo: $color-info;
+  colorSuccess: $color-success;
+  colorError: $color-error;
 }

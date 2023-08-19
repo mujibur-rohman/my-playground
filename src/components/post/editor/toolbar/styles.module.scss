@@ -1,0 +1,31 @@
+@import "/src/styles/base/colors";
+@import "/src/styles/utils/responsive";
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+
+  .youtube {
+    display: flex;
+    align-items: center;
+    padding: 4px 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    gap: 3px;
+    background-color: #c4302b;
+    color: $color-bg-base;
+    transition: background 0.3s;
+  }
+
+  .youtube:hover {
+    background-color: darken($color: #c4302b, $amount: 10);
+  }
+}

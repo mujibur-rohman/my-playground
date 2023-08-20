@@ -3,14 +3,20 @@
 
 .toolbar {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: space-between;
   padding: 1rem;
+
+  @include respond(desktop) {
+    flex-direction: row;
+  }
 }
 
 .left {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 1rem;
   font-size: 12px;
 
   .youtube {
@@ -27,5 +33,71 @@
 
   .youtube:hover {
     background-color: darken($color: #c4302b, $amount: 10);
+  }
+
+  .image {
+    display: flex;
+    align-items: center;
+    padding: 4px 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    gap: 3px;
+    background-color: $color-accent;
+    color: $color-bg-base;
+    transition: background 0.3s;
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 12px;
+
+  .toolbar-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px;
+    border-radius: 4px;
+    background-color: $color-bg-base;
+    border: 1px solid $color-text-base;
+    cursor: pointer;
+  }
+
+  .toolbar-item:hover {
+    background-color: $color-border;
+  }
+
+  .toolbar-item.active {
+    background-color: $color-text-base;
+    color: $color-bg-base;
+  }
+
+  .toolbar-item__group {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    background-color: $color-bg-base;
+    border: 1px solid $color-text-base;
+    overflow: hidden;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 3px;
+    }
+
+    &-item:hover {
+      background-color: $color-border;
+      color: $color-text-base;
+    }
+
+    &-item.active {
+      background-color: $color-text-base;
+      color: $color-bg-base;
+    }
   }
 }

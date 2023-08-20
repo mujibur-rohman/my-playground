@@ -1,0 +1,15 @@
+@import "/src/styles/base/colors";
+
+.text-editor {
+  outline: none;
+  padding: 0 1rem;
+  caret-color: $color-text-base;
+  min-height: 10rem;
+}
+
+.text-editor:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  color: $color-text-base100;
+  display: block; /* For Firefox */
+}

@@ -16,6 +16,7 @@ import {
 import styles from "./styles.module.scss";
 import { Editor } from "@tiptap/react";
 import { cn } from "@/lib/utils";
+import InputUrl from "@/components/popup/input-url";
 
 type Props = {
   editor: Editor | null;
@@ -25,10 +26,12 @@ function Toolbar({ editor }: Props) {
   return (
     <div className={styles.toolbar}>
       <div className={styles.left}>
-        <div className={styles.youtube}>
-          <Paperclip size={14} />
-          <span>Youtube</span>
-        </div>
+        <InputUrl>
+          <div className={styles.youtube}>
+            <Paperclip size={14} />
+            <span>Youtube</span>
+          </div>
+        </InputUrl>
         <div className={styles.image}>
           <ImagePlus size={14} />
           <span>Image</span>

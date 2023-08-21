@@ -1,0 +1,56 @@
+@import "/src/styles/base/colors";
+
+.input-url {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background-color: white;
+  bottom: -7.8rem;
+  left: 0;
+  color: $color-text-base;
+  padding: 1rem;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  z-index: 50;
+  width: 10rem;
+  transition: all;
+  cursor: default;
+  box-shadow: 2px 4px 5px -1px $color-border;
+  -webkit-box-shadow: 2px 4px 5px -1px $color-border;
+  -moz-box-shadow: 2px 4px 5px -1px $color-border;
+
+  .arrow {
+    width: 1.7rem;
+    height: 1rem;
+    position: absolute;
+    top: -0.7rem;
+    z-index: -1;
+    -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background-color: white;
+  }
+
+  button {
+    align-self: flex-end;
+  }
+
+  label {
+    font-weight: 500;
+  }
+}
+
+.input-url.open {
+  visibility: visible;
+  animation: popupAnimate 0.3s;
+  display: flex;
+}
+
+@keyframes popupAnimate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

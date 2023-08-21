@@ -10,16 +10,11 @@
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.16.2",
-    "@tiptap/extension-bold": "^2.1.6",
-    "@tiptap/extension-bullet-list": "^2.1.6",
     "@tiptap/extension-code-block-lowlight": "^2.1.6",
-    "@tiptap/extension-heading": "^2.1.6",
-    "@tiptap/extension-italic": "^2.1.6",
-    "@tiptap/extension-list-item": "^2.1.6",
-    "@tiptap/extension-ordered-list": "^2.1.6",
     "@tiptap/extension-placeholder": "^2.1.6",
-    "@tiptap/extension-strike": "^2.1.6",
+    "@tiptap/extension-text-align": "^2.1.6",
     "@tiptap/extension-underline": "^2.1.6",
+    "@tiptap/extension-youtube": "^2.1.6",
     "@tiptap/pm": "^2.1.6",
     "@tiptap/react": "^2.1.6",
     "@tiptap/starter-kit": "^2.1.6",
@@ -40,6 +35,7 @@
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-responsive": "^9.0.2",
     "sass": "^1.65.1",
     "typescript": "5.1.6"
   }

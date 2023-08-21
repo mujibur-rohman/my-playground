@@ -109,3 +109,33 @@ a {
   height: 0;
   pointer-events: none;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  margin: 1rem 0;
+}
+
+iframe {
+  border: 8px solid #000;
+  border-radius: 4px;
+  min-width: 200px;
+  min-height: 200px;
+  display: block;
+  outline: 0px solid transparent;
+}
+
+div[data-youtube-video] {
+  cursor: move;
+  padding-right: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.ProseMirror-selectednode iframe {
+  transition: outline 0.15s;
+  outline: 6px solid $color-primary;
+}

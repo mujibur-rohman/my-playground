@@ -1,19 +1,15 @@
-import Document from "@tiptap/extension-document";
-import Paragraph from "@tiptap/extension-paragraph";
-import Text from "@tiptap/extension-text";
-import Bold from "@tiptap/extension-bold";
-import Italic from "@tiptap/extension-italic";
+import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import Placeholder from "@tiptap/extension-placeholder";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
-import Heading from "@tiptap/extension-heading";
-import Strike from "@tiptap/extension-strike";
-import ListItem from "@tiptap/extension-list-item";
-import BulletList from "@tiptap/extension-bullet-list";
-import OrderedList from "@tiptap/extension-ordered-list";
+import Youtube from "@tiptap/extension-youtube";
+import TextAlign from "@tiptap/extension-text-align";
+
 import Toolbar from "./toolbar/toolbar";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { lowlight } from "lowlight/lib/core";
+import { useMediaQuery } from "react-responsive";
+
 // @ts-ignore
 import css from "highlight.js/lib/languages/css";
 import js from "highlight.js/lib/languages/javascript";
@@ -29,13 +25,15 @@ lowlight.registerLanguage("ts", ts);
 type Props = {};
 
 function TextEditor({}: Props) {
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 900px)",
+  });
+
   const editor = useEditor({
     extensions: [
-      Document,
-      Paragraph,
-      Text,
-      Bold,
-      Italic,
+      StarterKit.configure({
+        codeBlock: false,
+      }),
       Underline,
       Placeholder.configure({
         placeholder: "Write content …",
@@ -43,15 +41,18 @@ function TextEditor({}: Props) {
       CodeBlockLowlight.configure({
         lowlight,
       }),
-      Heading,
-      Strike,
-      ListItem,
-      BulletList,
-      OrderedList,
+      Youtube.configure({
+        width: isDesktop ? 640 : 280,
+        height: isDesktop ? 480 : 160,
+      }),
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
     ],
     editorProps: {
       attributes: {
         class: styles["text-editor"],
+        spellcheck: "false",
       },
     },
     content: ``,

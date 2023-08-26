@@ -1,0 +1,56 @@
+@import "/src/styles/base/colors";
+@import "/src/styles/utils/responsive";
+
+.input-url {
+  position: absolute;
+  flex-direction: column;
+  gap: 5px;
+  background-color: white;
+  bottom: -7.8rem;
+  left: 0;
+  color: $color-text-base;
+  padding: 1rem;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  z-index: 10;
+  width: 9rem;
+  cursor: default;
+  transform: scale(0) translateX(-12rem) translateY(-6rem);
+  opacity: 0;
+  box-shadow: 2px 4px 5px -1px $color-border;
+  -webkit-box-shadow: 2px 4px 5px -1px $color-border;
+  -moz-box-shadow: 2px 4px 5px -1px $color-border;
+
+  @include respond(tablet) {
+    width: 12rem;
+  }
+  @include respond(desktop) {
+    width: 15rem;
+  }
+
+  .arrow {
+    width: 1.7rem;
+    height: 1rem;
+    position: absolute;
+    top: -0.7rem;
+    z-index: -1;
+    -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background-color: white;
+  }
+
+  button {
+    align-self: flex-end;
+  }
+
+  label {
+    font-weight: 500;
+  }
+}
+
+.input-url.open {
+  visibility: visible;
+  display: flex;
+  transform: scale(1) translateX(-1rem);
+  opacity: 1;
+}

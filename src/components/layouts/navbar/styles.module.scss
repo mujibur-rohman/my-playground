@@ -1,13 +1,17 @@
 @import "/src/styles/base/colors";
 
 .navbar {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   backdrop-filter: blur(12px);
   height: 4rem;
-  padding: 0 0.75rem;
+  padding: 0 1rem;
   border-bottom: 2px solid $color-border;
+  background-color: $color-bg-base;
+  z-index: 50;
 
   .hamburger {
     color: $color-text-base100;

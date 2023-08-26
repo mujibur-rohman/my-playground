@@ -6,7 +6,7 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.103);
   backdrop-filter: blur(1px) !important;
-  z-index: 49;
+  z-index: 51;
   transition: all 1s;
   @include respond(desktop) {
     display: none;
@@ -19,8 +19,7 @@
 }
 
 .closeBackdrop {
-  animation: closeBackdropAnimate 0.5s;
-  animation-fill-mode: both;
+  display: none;
 }
 
 .openSidebar.openSidebar {
@@ -42,7 +41,7 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  z-index: 50;
+  z-index: 51;
   background-color: $color-bg-base;
   height: 100vh;
   width: 16rem;
@@ -53,7 +52,8 @@
     width: 16rem;
   }
   @include respond(desktop) {
-    position: static;
+    position: sticky;
+    top: 0;
   }
 
   .header {
@@ -72,7 +72,6 @@
 
     .logoClosed {
       width: 3rem;
-      transform: translate(1.25rem);
       transition: all 0.5s;
     }
 
@@ -83,7 +82,7 @@
 
     .logoTitleClosed {
       width: 4rem;
-      visibility: hidden;
+      display: none;
       animation: closeBackdropAnimate 0.5s;
     }
 
@@ -102,29 +101,29 @@
   .body {
     height: 80%;
     overflow-y: auto;
-    padding: 0 10px;
+    padding: 0 12px;
     padding-top: 1rem;
 
     .menu {
       display: flex;
       flex-direction: column;
-      gap: 1px;
+      gap: 0.4rem;
 
       .titleMenu {
         font-weight: 700;
         color: $color-text-base100;
-        font-size: 0.9rem;
+        font-size: 1rem;
       }
 
       .titleMenu__closed {
-        visibility: hidden;
+        font-size: 0.8rem;
       }
 
       .menuItem {
         display: flex;
         align-items: center;
-        gap: 7px;
-        padding: 0.7rem;
+        gap: 10px;
+        padding: 0.5rem;
         border-radius: 10px;
         text-transform: capitalize;
         font-weight: 500;
@@ -139,6 +138,12 @@
 
         span.close {
           display: none;
+        }
+
+        text-align: center;
+
+        span {
+          font-size: 1.1rem;
         }
       }
 

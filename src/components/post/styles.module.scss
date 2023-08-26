@@ -1,0 +1,26 @@
+@import "/src/styles/base/colors";
+
+.headers {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.4rem 1rem;
+  background-color: rgb(247, 247, 247);
+  position: sticky;
+  top: 4rem;
+  z-index: 50;
+}
+
+.input-title {
+  width: 90%;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  font-size: 2.3rem;
+}
+
+.input-title:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  color: $color-text-base100;
+  display: block; /* For Firefox */
+}

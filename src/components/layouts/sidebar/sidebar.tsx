@@ -74,7 +74,7 @@ const Sidebar = ({ open, openSidebar }: Props) => {
                     pathname === menu.path && pathname.startsWith(menu.path),
                 })}
               >
-                <menu.icon />
+                <menu.icon size={24} />
                 <span className={cn({ [styles.close]: !open })}>
                   {menu.name}
                 </span>

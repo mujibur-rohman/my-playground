@@ -1,0 +1,49 @@
+@import "/src/styles/base/colors";
+@import "/src/styles/utils/responsive";
+
+.form-login {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  &__logo {
+    width: 5rem;
+    text-align: center;
+  }
+
+  &__wrapper-title {
+    text-align: center;
+  }
+
+  &__title {
+    color: $color-primary;
+  }
+
+  &__subtitle {
+    color: $color-text-base100;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+
+    &-input {
+      @include respond(tablet) {
+        width: 15rem;
+      }
+
+      @include respond(desktop) {
+        width: 2 0rem;
+      }
+    }
+
+    &-error {
+      color: $color-error;
+      font-size: 0.75rem;
+    }
+  }
+}

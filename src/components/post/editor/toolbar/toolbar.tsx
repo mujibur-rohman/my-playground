@@ -56,16 +56,6 @@ function Toolbar({ editor }: Props) {
         </InputUrl>
       </div>
       <div className={styles.right}>
-        <InputUrl>
-          <div
-            className={cn(styles["toolbar-item"], {
-              [styles.active]: editor?.isActive("codeBlock"),
-            })}
-          >
-            <Paperclip size={14} />
-          </div>
-        </InputUrl>
-
         <div
           className={cn(styles["toolbar-item"], {
             [styles.active]: editor?.isActive("bold"),

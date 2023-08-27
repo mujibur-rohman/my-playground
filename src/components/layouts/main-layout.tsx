@@ -9,6 +9,7 @@ type Props = {
 
 const MainLayout = (props: Props) => {
   const [open, setOpen] = useState(false);
+  const [auth, setAuth] = useState(false);
 
   const toggleSidebar = useCallback(() => {
     setOpen(!open);
@@ -16,9 +17,9 @@ const MainLayout = (props: Props) => {
 
   return (
     <main style={{ display: "flex", background: variable.colorBackground }}>
-      <Sidebar open={open} openSidebar={toggleSidebar} />
+      {auth && <Sidebar open={open} openSidebar={toggleSidebar} />}
       <div style={{ width: "100%" }}>
-        <Navbar openSidebar={toggleSidebar} />
+        {auth && <Navbar openSidebar={toggleSidebar} />}
         <div>{props.children}</div>
       </div>
     </main>

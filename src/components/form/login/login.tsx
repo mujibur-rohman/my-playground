@@ -1,13 +1,28 @@
-import { Button, Input } from "antd";
+import { Alert, Button, Input } from "antd";
 import styles from "./styles.module.scss";
 import { useFormikContext } from "formik";
-import { LoginValues } from "@/pages/auth";
+import { LoginModel } from "@/models/auth";
+import { useSession } from "next-auth/react";
 
-type Props = {};
+type Props = {
+  setErrorServer: (message: string) => void;
+  errorServer: string;
+};
 
-function LoginForm({}: Props) {
-  const { values, handleSubmit, handleChange, handleBlur, touched, errors } =
-    useFormikContext<LoginValues>();
+function LoginForm({ errorServer, setErrorServer }: Props) {
+  const {
+    values,
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    touched,
+    errors,
+    isSubmitting,
+  } = useFormikContext<LoginModel>();
+
+  const session = useSession();
+  console.log("SESSION", session);
+
   return (
     <section className={styles["form-login"]}>
       <img
@@ -20,26 +35,48 @@ function LoginForm({}: Props) {
         <p className={styles["form-login__subtitle"]}>Login to continue</p>
       </div>
       <form onSubmit={handleSubmit} className={styles["form-login__form"]}>
+        {errorServer && (
+          <Alert
+            message={errorServer}
+            type="error"
+            afterClose={() => {
+              setErrorServer("");
+            }}
+            closable
+            showIcon
+          />
+        )}
         <div className={styles["form-login__form-input"]}>
           <Input
             placeholder="Username"
-            status="error"
+            status={errors.username && touched.username ? "error" : ""}
             name="username"
             value={values.username}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
-          <p className={styles["form-login__form-error"]}>error message</p>
+          {errors.username && touched.username && (
+            <p className={styles["form-login__form-error"]}>
+              {errors.username}
+            </p>
+          )}
         </div>
         <div className={styles["form-login__form-input"]}>
           <Input.Password
             placeholder="Password"
+            status={errors.password && touched.password ? "error" : ""}
             name="password"
             value={values.password}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
-          <p className={styles["form-login__form-error"]}>error message</p>
+          {errors.password && touched.password && (
+            <p className={styles["form-login__form-error"]}>
+              {errors.password}
+            </p>
+          )}
         </div>
-        <Button htmlType="submit" type="primary">
+        <Button htmlType="submit" type="primary" loading={isSubmitting}>
           Login
         </Button>
       </form>

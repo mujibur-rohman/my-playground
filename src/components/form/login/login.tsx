@@ -2,7 +2,6 @@ import { Alert, Button, Input } from "antd";
 import styles from "./styles.module.scss";
 import { useFormikContext } from "formik";
 import { LoginModel } from "@/models/auth";
-import { useSession } from "next-auth/react";
 
 type Props = {
   setErrorServer: (message: string) => void;
@@ -19,9 +18,6 @@ function LoginForm({ errorServer, setErrorServer }: Props) {
     errors,
     isSubmitting,
   } = useFormikContext<LoginModel>();
-
-  const session = useSession();
-  console.log("SESSION", session);
 
   return (
     <section className={styles["form-login"]}>

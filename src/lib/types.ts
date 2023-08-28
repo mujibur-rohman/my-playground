@@ -4,14 +4,18 @@ declare module "next-auth" {
       name: string;
       username: string;
       role: string;
-      profilePicture?: string;
+      profilePicture?: string | null | undefined;
+      token: {
+        accessToken: string;
+        refreshToken: string;
+      };
     };
   }
   interface User {
     name: string;
     username: string;
     role: string;
-    profilePicture?: string | null;
+    profilePicture: string | null | undefined;
     token: {
       accessToken: string;
       refreshToken: string;
@@ -23,7 +27,7 @@ declare module "next-auth/jwt" {
     name: string;
     username: string;
     role: string;
-    profilePicture?: string | null;
+    profilePicture?: string | null | undefined;
     token: {
       accessToken: string;
       refreshToken: string;

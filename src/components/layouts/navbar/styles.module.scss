@@ -17,4 +17,16 @@
     color: $color-text-base100;
     cursor: pointer;
   }
+
+  .avatar {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+
+    p {
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+  }
 }

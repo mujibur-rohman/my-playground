@@ -31,8 +31,8 @@ const authOptions: AuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET as string,
   pages: {
-    signIn: "/login",
-    error: "/login",
+    signIn: "/auth",
+    error: "/auth",
   },
   session: {
     strategy: "jwt",
@@ -40,19 +40,23 @@ const authOptions: AuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        console.log("USER", user);
         token.name = user.name;
         token.username = user.username;
         token.role = user.role;
         token.token = user.token;
-        token.profilePicture = null;
+        token.profilePicture = user.profilePicture;
       }
 
       return { ...token };
     },
     async session({ session, token }) {
-      console.log("SESSION", token);
-      //   session. = token;
+      session.user = {
+        name: token.name,
+        role: token.role,
+        username: token.username,
+        profilePicture: token.profilePicture,
+        token: token.token,
+      };
       return session;
     },
   },

@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import Sidebar from "./sidebar/sidebar";
 import Navbar from "./navbar/navbar";
 import variable from "@/styles/variables.module.scss";
+import { useRouter } from "next/router";
 
 type Props = {
   children: React.ReactNode;
@@ -10,6 +11,7 @@ type Props = {
 const MainLayout = (props: Props) => {
   const [open, setOpen] = useState(false);
   const [auth, setAuth] = useState(false);
+  const router = useRouter();
 
   const toggleSidebar = useCallback(() => {
     setOpen(!open);
@@ -17,9 +19,11 @@ const MainLayout = (props: Props) => {
 
   return (
     <main style={{ display: "flex", background: variable.colorBackground }}>
-      {auth && <Sidebar open={open} openSidebar={toggleSidebar} />}
+      {router.pathname !== "/auth" && (
+        <Sidebar open={open} openSidebar={toggleSidebar} />
+      )}
       <div style={{ width: "100%" }}>
-        {auth && <Navbar openSidebar={toggleSidebar} />}
+        {router.pathname !== "/auth" && <Navbar openSidebar={toggleSidebar} />}
         <div>{props.children}</div>
       </div>
     </main>

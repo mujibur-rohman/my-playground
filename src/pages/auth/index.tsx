@@ -74,16 +74,12 @@ function Login({}: Props) {
         alignItems: "center",
       }}
     >
-      {session.status === "authenticated" ? (
-        <p>You are Logged</p>
-      ) : (
-        <FormikProvider value={formik}>
-          <LoginForm
-            errorServer={errorServer}
-            setErrorServer={handleErrorServer}
-          />
-        </FormikProvider>
-      )}
+      <FormikProvider value={formik}>
+        <LoginForm
+          errorServer={errorServer}
+          setErrorServer={handleErrorServer}
+        />
+      </FormikProvider>
     </section>
   );
 }

@@ -18,7 +18,6 @@ const authOptions: AuthOptions = {
             username: credentials.username,
             password: credentials.password,
           });
-          console.log(user);
           if (user) {
             return { ...user.data } as any;
           }
@@ -40,6 +39,7 @@ const authOptions: AuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        token.id = user.id;
         token.name = user.name;
         token.username = user.username;
         token.role = user.role;
@@ -51,6 +51,7 @@ const authOptions: AuthOptions = {
     },
     async session({ session, token }) {
       session.user = {
+        id: token.id,
         name: token.name,
         role: token.role,
         username: token.username,
